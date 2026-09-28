@@ -1,0 +1,37 @@
+name: Deploy portfolio to GitHub Pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Restore original presentation download
+        shell: bash
+        run: |
+          cat large-assets/xpeng-parts/part-* > dist/assets/xpeng/original-project.pptx
+          echo "$(cat large-assets/xpeng-parts/sha256.txt)  dist/assets/xpeng/original-project.pptx" | sha256sum --check
+      - name: Restore original research PDF
+        shell: bash
+        run: |
+          cat large-assets/food-report/part-* > dist/assets/food/report.pdf
+          echo "$(cat large-assets/food-report/sha256.txt)  dist/assets/food/report.pdf" | sha256sum --check
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
