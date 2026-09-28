@@ -10,17 +10,24 @@
  .work-section .project-grid{position:absolute;inset:400px 0 0}
  .work-section .big-folder{top:795px}
 }
-/* Five projects: a clear title followed by three + two folders. */
-.work-section .folder-stage{height:auto;padding:70px 0 40px;max-width:1160px}
-.work-section .work-title{position:relative;top:auto;left:auto;margin:0 auto 125px}
-.work-section .work-title em{position:relative;display:block;top:auto;left:auto;text-align:left;padding-left:19%;font-size:clamp(52px,7vw,94px);line-height:.9}
-.work-section .work-title h2{font-size:clamp(80px,14vw,180px)}
-.work-section .work-title p{display:block;margin:26px 0 0;font-size:23px}
-.work-section .big-folder{display:none}
-.work-section .project-grid{position:relative;inset:auto;display:grid;grid-template-columns:repeat(6,1fr);gap:110px 55px;padding:0 60px}
-.work-section .project-folder{position:relative;left:auto;top:auto;width:100%;grid-column:span 2;opacity:1;transform:none!important}
-.work-section .project-folder:nth-child(4){grid-column:2/span 2}
-.work-section .project-folder:nth-child(5){grid-column:4/span 2}
-.work-section .project-folder h3{font-size:18px;margin-top:24px;line-height:1.5}
-.work-section .project-folder p{font-size:12px;line-height:1.6}
-@media(max-width:650px){.work-section .folder-stage{padding-top:45px}.work-section .work-title{margin-bottom:90px}.work-section .work-title h2{font-size:20vw}.work-section .work-title em{font-size:12vw}.work-section .work-title p{font-size:17px}.work-section .project-grid{padding:0 8px;gap:75px 25px;grid-template-columns:repeat(2,1fr)}.work-section .project-folder,.work-section .project-folder:nth-child(4),.work-section .project-folder:nth-child(5){grid-column:auto}.work-section .project-folder:nth-child(5){grid-column:1/-1;width:48%;justify-self:center}.work-section .project-folder h3{font-size:14px}}
+/* Folder burst: projects emerge from the central folder. */
+.work-section .folder-stage{height:1050px;max-width:1300px;padding:0;position:relative}
+.work-section .work-title{position:absolute;top:350px;left:0;width:100%;margin:0;z-index:5}
+.work-section .work-title em{position:absolute;top:-74px;left:22%;font-size:clamp(60px,8vw,100px);line-height:1;display:block}
+.work-section .work-title h2{font-size:clamp(90px,15vw,205px)}
+.work-section .work-title p{position:absolute;top:465px;left:0;width:100%;display:block;margin:0;font-size:25px}
+.work-section .big-folder{display:block;left:33%;top:505px;width:34%;height:280px;border:0;cursor:pointer;z-index:3;transform:rotate(-3deg)}
+.work-section .folder-stage.is-open .big-folder{transform:rotate(0)}
+.work-section .project-grid{position:absolute;inset:0;display:block;padding:0}
+.work-section .project-folder{position:absolute;top:560px;left:calc(50% - 90px);width:180px;opacity:0;transform:translate(0,0) scale(.35)!important;transition:transform 1.15s cubic-bezier(.2,.8,.25,1.12),opacity .55s;transition-delay:var(--delay,0s);z-index:4}
+.work-section .folder-stage.is-open .project-folder{opacity:1;transform:translate(var(--x),var(--y)) rotate(var(--r)) scale(1)!important}
+.work-section .p1{--x:clamp(-440px,-32vw,-230px);--y:-410px;--r:-7deg;--delay:0s}
+.work-section .p2{--x:0px;--y:-465px;--r:3deg;--delay:.08s}
+.work-section .p3{--x:clamp(230px,32vw,440px);--y:-410px;--r:6deg;--delay:.16s}
+.work-section .p4{--x:clamp(-430px,-31vw,-225px);--y:190px;--r:-6deg;--delay:.24s}
+.work-section .p5{--x:clamp(225px,31vw,430px);--y:190px;--r:7deg;--delay:.32s}
+.work-section .project-folder h3{font-size:16px;line-height:1.5;margin-top:22px}.work-section .project-folder p{font-size:11px}
+.work-section .work-note{font-size:15px;color:#75665e;margin-top:-35px}
+@media(max-width:650px){.work-section .folder-stage{height:860px}.work-section .work-title{top:315px}.work-section .work-title em{font-size:13vw;top:-45px;left:18%}.work-section .work-title h2{font-size:21vw}.work-section .work-title p{top:320px;font-size:20px}.work-section .big-folder{top:395px;left:25%;width:50%;height:185px}.work-section .project-folder{width:25%;left:37.5%;top:455px}.work-section .p1{--x:-30vw;--y:-315px}.work-section .p2{--x:0px;--y:-360px}.work-section .p3{--x:30vw;--y:-315px}.work-section .p4{--x:-27vw;--y:215px}.work-section .p5{--x:27vw;--y:215px}.work-section .folder-shape{height:75px}.work-section .folder-shape img{height:60px}.work-section .project-folder h3{font-size:11px;margin-top:14px}.work-section .project-folder p{font-size:8px}.work-section .folder-shape>span{font-size:16px;left:12px;bottom:9px}.work-section .big-folder span{font-size:9px}.work-section .work-note{margin-top:0}}
+@media(prefers-reduced-motion:reduce){.work-section .project-folder{transition:none}}
+@media(max-width:650px){.work-section .project-grid{margin:0}.work-section .p1,.work-section .p3{--y:-350px}.work-section .p2{--y:-385px}}

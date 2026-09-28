@@ -16,3 +16,9 @@
 .collage>.edge-bottom{bottom:-480px;right:35px}
 @media(max-width:800px){.collage>.collage-edge{width:220px}.collage>.edge-top{top:-365px;left:10px}.collage>.edge-bottom{bottom:-345px;right:5px}}
 .collage-track{z-index:1}.collage>.collage-edge{z-index:0}.collage>.edge-top{top:-560px;left:-45px}.collage .plate{z-index:2}
+/* One rotated plane, with real gutters between every screen. */
+.collage-track{display:flex;align-items:center;width:max-content;gap:30px}
+.collage-column{display:flex;flex-direction:column;gap:30px;flex:none;width:300px}
+.collage-column:nth-child(even){transform:translateY(140px)}
+.collage-track .collage-column img{display:block;width:300px;height:650px;object-fit:cover;flex:none;margin:0;border-radius:30px}
+@media(max-width:800px){.collage-track{gap:22px}.collage-column{width:220px;gap:22px}.collage-track .collage-column img{width:220px;height:477px}.collage-column:nth-child(even){transform:translateY(100px)}}
